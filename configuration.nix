@@ -8,6 +8,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot";  # ← AJOUTE ÇA !
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
@@ -34,10 +35,6 @@
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot";  # ← AJOUTE ÇA !
 
   fileSystems."/boot" = {
     device = "/dev/nvme0n1p7";
