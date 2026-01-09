@@ -35,6 +35,17 @@
     nerd-fonts.jetbrains-mono
   ];
 
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot";  # ← AJOUTE ÇA !
+
+  fileSystems."/boot" = {
+    device = "/dev/nvme0n1p7";
+    fsType = "vfat";
+  };
+
+# Et dans hardware-configuration.nix (généré), ça doit matcher
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "25.11";
 
